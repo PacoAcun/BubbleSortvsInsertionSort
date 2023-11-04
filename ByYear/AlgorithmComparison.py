@@ -1,7 +1,8 @@
-import InsertionSort as ins
-import BubbleSort as bub
 import pandas as pd #pip install pandas
 import time
+import matplotlib.pyplot as plt #pip install matplotlib
+import InsertionSort as ins
+import BubbleSort as bub
 
 df = pd.read_csv("Netflix DB.csv")
 
@@ -20,6 +21,9 @@ year_df_ins.to_csv("ByYear/Insertion.csv", index=False)
 print(year_df_ins.head())
 
 print(f"--------Tiempo de ejecución de Insertion Sort: {end_time - start_time} segundos-----------")
+
+# Guardar el tiempo de ejecución en una lista
+tiempos = [end_time - start_time]
 
 
 print()
@@ -44,3 +48,14 @@ year_df_bub.to_csv("ByYear/Bubble.csv", index=False)
 print(year_df_bub.head())
 
 print(f"----------Tiempo de ejecución de Bubble Sort: {end_time - start_time} segundos------------")
+
+# Guardar el tiempo de ejecución en la lista
+tiempos.append(end_time - start_time)
+
+
+# Graficar los tiempos de ejecución
+algoritmos = ["Insertion Sort", "Bubble Sort"]
+plt.bar(algoritmos, tiempos)
+plt.ylabel("Tiempo de ejecución (segundos)")
+plt.title("Comparación de Tiempos de Ejecución")
+plt.show()
