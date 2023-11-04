@@ -15,7 +15,7 @@ end_time = time.time()
 
 # Crea un DataFrame con la columna "Year" ordenada por Insertion Sort
 year_df_ins = pd.DataFrame(year, columns=["Year"])
-year_df_ins.to_csv("Sort_Year_Ins.csv", index=False)
+year_df_ins.to_csv("ByYear/Insertion.csv", index=False)
 
 print(year_df_ins.head())
 
@@ -39,7 +39,7 @@ end_time = time.time()
 
 # Crea un DataFrame con la columna "Year" ordenada por Bubble Sort
 year_df_bub = pd.DataFrame(year, columns=["Year"])
-year_df_bub.to_csv("Sort_Year_Bub.csv", index=False)
+year_df_bub.to_csv("ByYear/Bubble.csv", index=False)
 
 print(year_df_bub.head())
 
