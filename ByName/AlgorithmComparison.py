@@ -3,6 +3,8 @@ import time
 import matplotlib.pyplot as plt
 import InsertionSort as ins
 import BubbleSort as bub
+import QuickSort as qck
+import MergeSort as mrg
 
 df = pd.read_csv("Netflix DB.csv")
 
@@ -52,8 +54,52 @@ print(f"----------Tiempo de ejecución de Bubble Sort: {end_time - start_time} s
 # Guardar el tiempo de ejecución en la lista
 tiempos.append(end_time - start_time)
 
+# Volver a cargar el DataFrame original
+df = pd.read_csv("Netflix DB.csv")
+
+# Convertir la columna "Name of movie" a una lista de cadenas de texto
+names = df["Name of movie"].astype(str).tolist()
+
+# Medir el tiempo de ejecución de Quick Sort
+start_time = time.time()
+qck.quick_sort_strings(names, 0, len(names) - 1)
+end_time = time.time()
+
+# Crear un DataFrame con la columna "Name of movie" ordenada por Quick Sort
+name_df_qck = pd.DataFrame(names, columns=["Name of movie"])
+name_df_qck.to_csv("ByName/QuickSort.csv", index=False)
+
+print(name_df_qck.head())
+
+print(f"--------Tiempo de ejecución de Quick Sort: {end_time - start_time} segundos-----------")
+
+# Guardar el tiempo de ejecución en la lista
+tiempos.append(end_time - start_time)
+
+# Volver a cargar el DataFrame original
+df = pd.read_csv("Netflix DB.csv")
+
+# Convertir la columna "Name of movie" a una lista de cadenas de texto
+names = df["Name of movie"].astype(str).tolist()
+
+# Medir el tiempo de ejecución de Quick Sort
+start_time = time.time()
+mrg.merge_sort(names)  # Asegúrate de que QuickSort funcione correctamente
+end_time = time.time()
+
+# Crear un DataFrame con la columna "Name of movie" ordenada por Quick Sort
+name_df_mrg = pd.DataFrame(names, columns=["Name of movie"])
+name_df_mrg.to_csv("ByName/Merge.csv", index=False)
+
+print(name_df_mrg.head())
+
+print(f"--------Tiempo de ejecución de Merge Sort: {end_time - start_time} segundos-----------")
+
+# Guardar el tiempo de ejecución en la lista
+tiempos.append(end_time - start_time)
+
 # Graficar los tiempos de ejecución
-algoritmos = ["Insertion Sort", "Bubble Sort"]
+algoritmos = ["Insertion Sort", "Bubble Sort","Quick Sort", "Merge Sort"]
 plt.bar(algoritmos, tiempos)
 plt.ylabel("Tiempo de ejecución (segundos)")
 plt.title("Comparación de Tiempos de Ejecución")

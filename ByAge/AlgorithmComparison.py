@@ -3,14 +3,16 @@ import time
 import matplotlib.pyplot as plt
 import BubbleSort as bub
 import InsertionSort as ins
+import QuickSort as qck
+import MergeSort as mrg
 
 def convert_age_rating(age_rating):
-    if age_rating == "ALL" or pd.isna(age_rating) or age_rating == "":
-        return "0"  # Asigna un valor representativo para "ALL" o valores vacíos
-    if isinstance(age_rating, str) and age_rating.endswith("+"):
-        return age_rating.rstrip('+')  # Elimina el símbolo '+' de "X+"
-    return str(age_rating)  # Convierte valores numéricos a cadenas de texto
-
+    if age_rating in ["ALL", "All"] or pd.isna(age_rating) or age_rating == "" or age_rating == "TV-MA":
+        return 0
+    elif isinstance(age_rating, str) and age_rating.endswith("+"):
+        return int(age_rating.rstrip('+'))
+    else:
+        return int(age_rating)
 
 df = pd.read_csv("Netflix DB.csv")
 
@@ -64,8 +66,65 @@ print(f"----------Tiempo de ejecución de Bubble Sort: {end_time - start_time} s
 # Guardar el tiempo de ejecución en la lista
 tiempos.append(end_time - start_time)
 
+# Vuelve a cargar el DataFrame original
+df = pd.read_csv("Netflix DB.csv")
+
+# Copia la columna "Age Rating" en una lista para ordenarla
+age_ratings = df["Age Rating"].tolist()
+
+# Convierte la lista de "Age Rating" para que sea ordenable
+age_ratings = [convert_age_rating(age_rating) for age_rating in age_ratings]
+
+# Mide el tiempo de ejecución de Bubble Sort
+start_time = time.time()
+qck.quick_sort(age_ratings, 0, len(age_ratings) - 1)
+end_time = time.time()
+
+# Crea un DataFrame con la columna "Age Rating" ordenada por Bubble Sort
+age_rating_df_qck = pd.DataFrame(age_ratings, columns=["Age Rating"])
+age_rating_df_qck.to_csv("ByAge/QuickSort.csv", index=False)
+
+print(age_rating_df_qck.head())
+
+print(f"----------Tiempo de ejecución de Quick Sort: {end_time - start_time} segundos------------")
+
+# Guardar el tiempo de ejecución en la lista
+tiempos.append(end_time - start_time)
+
+
+
+
+
+
+
+# Vuelve a cargar el DataFrame original
+df = pd.read_csv("Netflix DB.csv")
+
+# Copia la columna "Age Rating" en una lista para ordenarla
+age_ratings = df["Age Rating"].tolist()
+
+# Convierte la lista de "Age Rating" para que sea ordenable
+age_ratings = [convert_age_rating(age_rating) for age_rating in age_ratings]
+
+# Mide el tiempo de ejecución de Bubble Sort
+start_time = time.time()
+mrg.merge_sort(age_ratings)
+end_time = time.time()
+
+# Crea un DataFrame con la columna "Age Rating" ordenada por Bubble Sort
+age_rating_df_mrg = pd.DataFrame(age_ratings, columns=["Age Rating"])
+age_rating_df_mrg.to_csv("ByAge/MergeSort.csv", index=False)
+
+print(age_rating_df_mrg.head())
+
+print(f"----------Tiempo de ejecución de Merge Sort: {end_time - start_time} segundos------------")
+
+# Guardar el tiempo de ejecución en la lista
+tiempos.append(end_time - start_time)
+
+
 # Graficar los tiempos de ejecución
-algoritmos = ["Insertion Sort", "Bubble Sort"]
+algoritmos = ["Insertion Sort", "Bubble Sort", "Quick Sort", "Merge Sort"]
 plt.bar(algoritmos, tiempos)
 plt.ylabel("Tiempo de ejecución (segundos)")
 plt.title("Comparación de Tiempos de Ejecución")
