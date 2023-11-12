@@ -1,6 +1,6 @@
 # Proyecto de Comparación de Algoritmos de Ordenación
 
-Este proyecto tiene como objetivo realizar una comparación detallada de algoritmos de ordenación, específicamente Bubble Sort e Insertion Sort, en el contexto de una base de datos de películas utilizando Python. La base de datos proporciona una variedad de escenarios para poner a prueba y analizar el rendimiento de estos algoritmos en situaciones del mundo real.
+Este proyecto tiene como objetivo realizar una comparación detallada de algoritmos de ordenación, específicamente Bubble Sort, Insertion Sort, Quick Sort y Merge Sort, en el contexto de una base de datos de películas utilizando Python. La base de datos proporciona una variedad de escenarios para poner a prueba y analizar el rendimiento de estos algoritmos en situaciones del mundo real.
 
 ## Objetivos
 
@@ -21,6 +21,14 @@ Bubble Sort es un algoritmo de ordenación simple que funciona comparando pares 
 ### Insertion Sort
 
 Insertion Sort es otro algoritmo de ordenación que opera dividiendo la lista en dos secciones: una sección ordenada y una sección no ordenada. Luego, toma elementos de la sección no ordenada y los inserta en la sección ordenada en la posición correcta. El algoritmo repite este proceso hasta que toda la lista esté ordenada. Insertion Sort es más eficiente que Bubble Sort en ciertos casos, pero también puede ser lento para listas muy largas.
+
+### Quick Sort
+
+Quicksort es un algoritmo de ordenación que utiliza la técnica de divide y vencerás. El algoritmo elige un elemento llamado pivote y divide la lista en dos subconjuntos: uno con los elementos menores o iguales al pivote y otro con los elementos mayores al pivote. Luego, ordena recursivamente cada subconjunto hasta que la lista esté ordenada. Quicksort es un algoritmo muy rápido y eficiente para listas grandes y desordenadas, pero puede ser lento y poco eficiente si la lista está casi ordenada o tiene muchos elementos repetidos.
+
+### Merge Sort
+
+Mergesort es otro algoritmo de ordenación que utiliza la técnica de divide y vencerás. El algoritmo divide la lista en dos mitades y ordena cada mitad recursivamente. Luego, combina las dos mitades ordenadas en una sola lista ordenada. Mergesort es un algoritmo estable y eficiente para cualquier tipo de lista, pero requiere más espacio de memoria que otros algoritmos.
 
 ## Análisis de Resultados
 
