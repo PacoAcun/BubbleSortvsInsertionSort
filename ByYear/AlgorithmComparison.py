@@ -29,7 +29,7 @@ print(year_df_ins.head())
 print(f"--------Tiempo de ejecución de Insertion Sort: {end_time - start_time} segundos-----------")
 
 # Guardar el tiempo de ejecución en una lista
-tiempos = [end_time - start_time]
+insertion_sort_time = end_time - start_time
 
 
 print()
@@ -59,10 +59,7 @@ print(year_df_bub.head())
 print(f"----------Tiempo de ejecución de Bubble Sort: {end_time - start_time} segundos------------")
 
 # Guardar el tiempo de ejecución en la lista
-tiempos.append(end_time - start_time)
-
-
-
+bubble_sort_time = end_time - start_time
 
 
 # Carga el DataFrame original
@@ -88,7 +85,7 @@ print(year_df_qck.head())
 print(f"----------Tiempo de ejecución de Quick Sort: {end_time - start_time} segundos------------")
 
 # Guardar el tiempo de ejecución en la lista
-tiempos.append(end_time - start_time)
+quick_sort_time = end_time - start_time
 
 # Carga el DataFrame original
 df = pd.read_csv("Netflix DB.csv")
@@ -113,12 +110,17 @@ print(year_df_mrg.head())
 print(f"----------Tiempo de ejecución de Merge Sort: {end_time - start_time} segundos------------")
 
 # Guardar el tiempo de ejecución en la lista
-tiempos.append(end_time - start_time)
+merge_sort_time = end_time - start_time
 
 
 # Graficar los tiempos de ejecución
-algoritmos = ["Insertion Sort", "Bubble Sort", "Quick Sort", "Merge Sort"]
-plt.bar(algoritmos, tiempos)
-plt.ylabel("Tiempo de ejecución (segundos)")
-plt.title("Comparación de Tiempos de Ejecución")
+plt.figure(figsize=(10, 5))
+plt.bar("Insertion Sort", insertion_sort_time, color="blue", label="Insertion Sort")
+plt.bar("Bubble Sort", bubble_sort_time, color="red", label="Bubble Sort")
+plt.bar("Quick Sort", quick_sort_time, color="yellow", label="Quick Sort")
+plt.bar("Merge Sort", merge_sort_time, color="green", label="Merge Sort")
+plt.title("Tiempo de Ejecución de Algoritmos de Ordenación")
+plt.xlabel("Algoritmo")
+plt.ylabel("Tiempo (segundos)")
+plt.legend()
 plt.show()
