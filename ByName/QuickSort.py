@@ -1,8 +1,32 @@
 def quick_sort_strings(arr, start, end):
-    if start < end:
+    size = end - start + 1
+    stack = [0] * size
+    top = -1
+
+    top += 1
+    stack[top] = start
+    top += 1
+    stack[top] = end
+
+    while top >= 0:
+        end = stack[top]
+        top -= 1
+        start = stack[top]
+        top -= 1
+
         p = partition(arr, start, end)
-        quick_sort_strings(arr, start, p - 1)
-        quick_sort_strings(arr, p + 1, end)
+
+        if p - 1 > start:
+            top += 1
+            stack[top] = start
+            top += 1
+            stack[top] = p - 1
+
+        if p + 1 < end:
+            top += 1
+            stack[top] = p + 1
+            top += 1
+            stack[top] = end
 
 def partition(arr, start, end):
     pivot = arr[end]

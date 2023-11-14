@@ -1,8 +1,19 @@
+import sys
+
 def quick_sort(arr, start, end):
-    if start < end:
-        p = partition(arr, start, end)
-        quick_sort(arr, start, p - 1)
-        quick_sort(arr, p + 1, end)
+    sys.setrecursionlimit(10**6)
+
+    def quick_sort_helper(arr, start, end):
+        while start < end:
+            p = partition(arr, start, end)
+            if p - start < end - p:
+                quick_sort_helper(arr, start, p - 1)
+                start = p + 1
+            else:
+                quick_sort_helper(arr, p + 1, end)
+                end = p - 1
+
+    quick_sort_helper(arr, start, end)
 
 def partition(arr, start, end):
     pivot = arr[end]
@@ -13,3 +24,5 @@ def partition(arr, start, end):
             arr[i], arr[j] = arr[j], arr[i]
     arr[i + 1], arr[end] = arr[end], arr[i + 1]
     return i + 1
+
+

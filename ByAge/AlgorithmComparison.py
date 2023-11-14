@@ -1,8 +1,9 @@
 import pandas as pd
 import time
 import matplotlib.pyplot as plt
-import BubbleSort as bub
+import random
 import InsertionSort as ins
+import BubbleSort as bub
 import QuickSort as qck
 import MergeSort as mrg
 
@@ -14,128 +15,261 @@ def convert_age_rating(age_rating):
     else:
         return int(age_rating)
 
+insertion_times = []
+bubble_times = []
+quick_times = []
+merge_times = []
+
 df = pd.read_csv("Netflix DB.csv")
 
 print("By age :")
 print()
 
+ages = df["Age Rating"].apply(lambda x: convert_age_rating(x)).tolist()
 
-# Copia la columna "Age Rating" en una lista para ordenarla
-age_ratings = df["Age Rating"].tolist()
+reverse_ages = sorted(ages, reverse=True)
 
-# Convierte la lista de "Age Rating" para que sea ordenable
-age_ratings = [convert_age_rating(age_rating) for age_rating in age_ratings]
+random_ages = random.sample(ages, len(ages))
 
-# Mide el tiempo de ejecución de Insertion Sort
+sorted_ages = sorted(ages)
+
+# Normal
 start_time = time.time()
-ins.insertion_sort(age_ratings)  # Utiliza el algoritmo de inserción modificado
+ins.insertion_sort(ages.copy())  
 end_time = time.time()
 
-# Crea un DataFrame con la columna "Age Rating" ordenada por Insertion Sort
-age_rating_df_ins = pd.DataFrame(age_ratings, columns=["Age Rating"])
-age_rating_df_ins.to_csv("ByAge/Insertion.csv", index=False)
+insertion_sort_time_normal = end_time - start_time
+insertion_times.append(time.time() - start_time)
 
-#print(age_rating_df_ins.head())
+# Revertido
+start_time = time.time()
+ins.insertion_sort(reverse_ages.copy())  
+end_time = time.time()
 
-print(f"--------Tiempo de ejecución de Insertion Sort: {end_time - start_time} segundos-----------")
+insertion_sort_time_reverse = end_time - start_time
+insertion_times.append(time.time() - start_time)
 
-# Guardar el tiempo de ejecución en una lista
-insertion_sort_time = end_time - start_time
+# Aleatorio
+start_time = time.time()
+ins.insertion_sort(random_ages.copy())  
+end_time = time.time()
 
+insertion_sort_time_random = end_time - start_time
+insertion_times.append(time.time() - start_time)
+
+# Ordenado
+start_time = time.time()
+ins.insertion_sort(sorted_ages.copy())  
+end_time = time.time()
+
+insertion_sort_time_sorted = end_time - start_time
+insertion_times.append(time.time() - start_time)
+
+print(f"--------Tiempo de ejecución de Insertion Sort normal: {insertion_sort_time_normal} segundos-----------")
+print(f"--------Tiempo de ejecución de Insertion Sort revertido: {insertion_sort_time_reverse} segundos-----------")
+print(f"--------Tiempo de ejecución de Insertion Sort aleatorio: {insertion_sort_time_random} segundos-----------")
+print(f"--------Tiempo de ejecución de Insertion Sort ordenado: {insertion_sort_time_sorted} segundos-----------")
 print()
 
-# Vuelve a cargar el DataFrame original
 df = pd.read_csv("Netflix DB.csv")
 
-# Copia la columna "Age Rating" en una lista para ordenarla
-age_ratings = df["Age Rating"].tolist()
+ages = df["Age Rating"].apply(lambda x: convert_age_rating(x)).tolist()
 
-# Convierte la lista de "Age Rating" para que sea ordenable
-age_ratings = [convert_age_rating(age_rating) for age_rating in age_ratings]
+reverse_ages = sorted(ages, reverse=True)
 
-# Mide el tiempo de ejecución de Bubble Sort
+random_ages = random.sample(ages, len(ages))
+
+sorted_ages = sorted(ages)
+
+# Normal
 start_time = time.time()
-bub.bubble_sort(age_ratings)  # Utiliza el algoritmo de burbuja modificado
+bub.bubble_sort(ages.copy())  
 end_time = time.time()
 
-# Crea un DataFrame con la columna "Age Rating" ordenada por Bubble Sort
-age_rating_df_bub = pd.DataFrame(age_ratings, columns=["Age Rating"])
-age_rating_df_bub.to_csv("ByAge/Bubble.csv", index=False)
+bubble_sort_time_normal = end_time - start_time
+bubble_times.append(time.time() - start_time)
 
-#print(age_rating_df_bub.head())
+# Revertido
+start_time = time.time()
+bub.bubble_sort(reverse_ages.copy())  
+end_time = time.time()
 
-print(f"----------Tiempo de ejecución de Bubble Sort: {end_time - start_time} segundos------------")
+bubble_sort_time_reverse = end_time - start_time
+bubble_times.append(time.time() - start_time)
 
-# Guardar el tiempo de ejecución en la lista
-bubble_sort_time = end_time - start_time
+# Aleatorio
+start_time = time.time()
+bub.bubble_sort(random_ages.copy())  
+end_time = time.time()
 
+bubble_sort_time_random = end_time - start_time
+bubble_times.append(time.time() - start_time)
 
+# Ordenado
+start_time = time.time()
+bub.bubble_sort(sorted_ages.copy())  
+end_time = time.time()
+
+bubble_sort_time_sorted = end_time - start_time
+bubble_times.append(time.time() - start_time)
+
+print(f"--------Tiempo de ejecución de Bubble Sort normal: {bubble_sort_time_normal} segundos-----------")
+print(f"--------Tiempo de ejecución de Bubble Sort revertido: {bubble_sort_time_reverse} segundos-----------")
+print(f"--------Tiempo de ejecución de Bubble Sort aleatorio: {bubble_sort_time_random} segundos-----------")
+print(f"--------Tiempo de ejecución de Bubble Sort ordenado: {bubble_sort_time_sorted} segundos-----------")
 print()
 
-
-# Vuelve a cargar el DataFrame original
 df = pd.read_csv("Netflix DB.csv")
 
-# Copia la columna "Age Rating" en una lista para ordenarla
-age_ratings = df["Age Rating"].tolist()
+ages = df["Age Rating"].apply(lambda x: convert_age_rating(x)).tolist()
 
-# Convierte la lista de "Age Rating" para que sea ordenable
-age_ratings = [convert_age_rating(age_rating) for age_rating in age_ratings]
+reverse_ages = sorted(ages, reverse=True)
 
-# Mide el tiempo de ejecución de Bubble Sort
+random_ages = random.sample(ages, len(ages))
+
+sorted_ages = sorted(ages)
+
+# Normal
 start_time = time.time()
-qck.quick_sort(age_ratings, 0, len(age_ratings) - 1)
+qck.quick_sort(ages.copy(), 0, len(ages) - 1)  
 end_time = time.time()
 
-# Crea un DataFrame con la columna "Age Rating" ordenada por Bubble Sort
-age_rating_df_qck = pd.DataFrame(age_ratings, columns=["Age Rating"])
-age_rating_df_qck.to_csv("ByAge/QuickSort.csv", index=False)
+quick_sort_time_normal = end_time - start_time
+quick_times.append(time.time() - start_time)
 
-#print(age_rating_df_qck.head())
+# Revertido
+start_time = time.time()
+qck.quick_sort(reverse_ages.copy(), 0, len(reverse_ages) - 1)  
+end_time = time.time()
 
-print(f"----------Tiempo de ejecución de Quick Sort: {end_time - start_time} segundos------------")
+quick_sort_time_reverse = end_time - start_time
+quick_times.append(time.time() - start_time)
 
-# Guardar el tiempo de ejecución en la lista
-quick_sort_time = end_time - start_time
+# Aleatorio
+start_time = time.time()
+qck.quick_sort(random_ages.copy(), 0, len(random_ages) - 1)  
+end_time = time.time()
 
+quick_sort_time_random = end_time - start_time
+quick_times.append(time.time() - start_time)
 
+# Ordenado
+start_time = time.time()
+qck.quick_sort(sorted_ages.copy(), 0, len(sorted_ages) - 1)  
+end_time = time.time()
+
+quick_sort_time_sorted = end_time - start_time
+quick_times.append(time.time() - start_time)
+
+print(f"--------Tiempo de ejecución de Quick Sort normal: {quick_sort_time_normal} segundos-----------")
+print(f"--------Tiempo de ejecución de Quick Sort revertido: {quick_sort_time_reverse} segundos-----------")
+print(f"--------Tiempo de ejecución de Quick Sort aleatorio: {quick_sort_time_random} segundos-----------")
+print(f"--------Tiempo de ejecución de Quick Sort ordenado: {quick_sort_time_sorted} segundos-----------")
 print()
 
-
-# Vuelve a cargar el DataFrame original
 df = pd.read_csv("Netflix DB.csv")
 
-# Copia la columna "Age Rating" en una lista para ordenarla
-age_ratings = df["Age Rating"].tolist()
+ages = df["Age Rating"].apply(lambda x: convert_age_rating(x)).tolist()
 
-# Convierte la lista de "Age Rating" para que sea ordenable
-age_ratings = [convert_age_rating(age_rating) for age_rating in age_ratings]
+reverse_ages = sorted(ages, reverse=True)
 
-# Mide el tiempo de ejecución de Bubble Sort
+random_ages = random.sample(ages, len(ages))
+
+sorted_ages = sorted(ages)
+
+# Normal
 start_time = time.time()
-mrg.merge_sort(age_ratings)
+mrg.merge_sort(ages.copy()) 
 end_time = time.time()
 
-# Crea un DataFrame con la columna "Age Rating" ordenada por Bubble Sort
-age_rating_df_mrg = pd.DataFrame(age_ratings, columns=["Age Rating"])
-age_rating_df_mrg.to_csv("ByAge/MergeSort.csv", index=False)
+merge_sort_time_normal = end_time - start_time
+merge_times.append(time.time() - start_time)
 
-#print(age_rating_df_mrg.head())
+# Revertido
+start_time = time.time()
+mrg.merge_sort(reverse_ages.copy()) 
+end_time = time.time()
 
-print(f"----------Tiempo de ejecución de Merge Sort: {end_time - start_time} segundos------------")
+merge_sort_time_reverse = end_time - start_time
+merge_times.append(time.time() - start_time)
 
-# Guardar el tiempo de ejecución en la lista
-merge_sort_time = end_time - start_time
+# Aleatorio
+start_time = time.time()
+mrg.merge_sort(random_ages.copy()) 
+end_time = time.time()
+
+merge_sort_time_random = end_time - start_time
+merge_times.append(time.time() - start_time)
+
+# Ordenado
+start_time = time.time()
+mrg.merge_sort(sorted_ages.copy()) 
+end_time = time.time()
+
+merge_sort_time_sorted = end_time - start_time
+merge_times.append(time.time() - start_time)
 
 
-# Graficar los tiempos de ejecución
-plt.figure(figsize=(10, 5))
-plt.bar("Insertion Sort", insertion_sort_time, color="blue", label="Insertion Sort")
-plt.bar("Bubble Sort", bubble_sort_time, color="red", label="Bubble Sort")
-plt.bar("Quick Sort", quick_sort_time, color="yellow", label="Quick Sort")
-plt.bar("Merge Sort", merge_sort_time, color="green", label="Merge Sort")
-plt.title("Tiempo de Ejecución de Algoritmos de Ordenación")
-plt.xlabel("Algoritmo")
-plt.ylabel("Tiempo (segundos)")
-plt.legend()
+age_df_ins = pd.DataFrame(ages, columns=["Age Rating"])
+age_df_ins.to_csv("ByAge/Insertion.csv", index=False)
+
+age_df_bub = pd.DataFrame(ages, columns=["Age Rating"])
+age_df_bub.to_csv("ByAge/Bubble.csv", index=False)
+
+age_df_qck = pd.DataFrame(ages, columns=["Age Rating"])
+age_df_qck.to_csv("ByAge/QuickSort.csv", index=False)
+
+age_df_mrg = pd.DataFrame(ages, columns=["Age Rating"])
+age_df_mrg.to_csv("ByAge/MergeSort.csv", index=False)
+
+print(f"--------Tiempo de ejecución de Merge Sort normal: {merge_sort_time_normal} segundos-----------")
+print(f"--------Tiempo de ejecución de Merge Sort revertido: {merge_sort_time_reverse} segundos-----------")
+print(f"--------Tiempo de ejecución de Merge Sort aleatorio: {merge_sort_time_random} segundos-----------")
+print(f"--------Tiempo de ejecución de Merge Sort ordenado: {merge_sort_time_sorted} segundos-----------")
+
+# Graficar los resultados
+labels = ['Normal', 'Revertido', 'Aleatorio', 'Ordenado']
+width = 0.2 
+
+fig, ax = plt.subplots(figsize=(10, 6))
+
+bar1 = ax.bar(
+    [i - 1.5 * width for i in range(1, 5)],
+    insertion_times,
+    width,
+    label='Insertion Sort',
+    align='center',
+)
+
+bar2 = ax.bar(
+    [i - 0.5 * width for i in range(1, 5)],
+    bubble_times,
+    width,
+    label='Bubble Sort',
+    align='center',
+)
+
+bar3 = ax.bar(
+    [i + 0.5 * width for i in range(1, 5)],
+    quick_times,
+    width,
+    label='Quick Sort',
+    align='center',
+)
+
+bar4 = ax.bar(
+    [i + 1.5 * width for i in range(1, 5)],
+    merge_times,
+    width,
+    label='Merge Sort',
+    align='center',
+)
+
+ax.set_xlabel('Tipo de Datos')
+ax.set_ylabel('Tiempo de Ejecución (segundos)')
+ax.set_title('Comparación de Tiempos de Ejecución de Algoritmos de Ordenación')
+ax.set_xticks([i for i in range(1, 5)])
+ax.set_xticklabels(labels)
+ax.legend()
+
 plt.show()
