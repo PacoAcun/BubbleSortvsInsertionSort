@@ -9,6 +9,9 @@ import MergeSort as mrg
 # Carga el DataFrame original
 df = pd.read_csv("Netflix DB.csv")
 
+print("By year :")
+print()
+
 # Reemplaza los campos vacíos con 0 y convierte la columna "Year" a entero
 df["Year"] = df["Year"].fillna(0).astype(int)
 
@@ -24,7 +27,7 @@ end_time = time.time()
 year_df_ins = pd.DataFrame(year, columns=["Year"])
 year_df_ins.to_csv("ByYear/Insertion.csv", index=False)
 
-print(year_df_ins.head())
+#print(year_df_ins.head())
 
 print(f"--------Tiempo de ejecución de Insertion Sort: {end_time - start_time} segundos-----------")
 
@@ -32,7 +35,6 @@ print(f"--------Tiempo de ejecución de Insertion Sort: {end_time - start_time} 
 insertion_sort_time = end_time - start_time
 
 
-print()
 print()
 
 
@@ -54,12 +56,15 @@ end_time = time.time()
 year_df_bub = pd.DataFrame(year, columns=["Year"])
 year_df_bub.to_csv("ByYear/Bubble.csv", index=False)
 
-print(year_df_bub.head())
+#print(year_df_bub.head())
 
 print(f"----------Tiempo de ejecución de Bubble Sort: {end_time - start_time} segundos------------")
 
 # Guardar el tiempo de ejecución en la lista
 bubble_sort_time = end_time - start_time
+
+
+print()
 
 
 # Carga el DataFrame original
@@ -80,12 +85,16 @@ end_time = time.time()
 year_df_qck = pd.DataFrame(year, columns=["Year"])
 year_df_qck.to_csv("ByYear/QuickSort.csv", index=False)
 
-print(year_df_qck.head())
+#print(year_df_qck.head())
 
 print(f"----------Tiempo de ejecución de Quick Sort: {end_time - start_time} segundos------------")
 
 # Guardar el tiempo de ejecución en la lista
 quick_sort_time = end_time - start_time
+
+
+print()
+
 
 # Carga el DataFrame original
 df = pd.read_csv("Netflix DB.csv")
@@ -105,7 +114,7 @@ end_time = time.time()
 year_df_mrg = pd.DataFrame(year, columns=["Year"])
 year_df_mrg.to_csv("ByYear/MergeSort.csv", index=False)
 
-print(year_df_mrg.head())
+#print(year_df_mrg.head())
 
 print(f"----------Tiempo de ejecución de Merge Sort: {end_time - start_time} segundos------------")
 

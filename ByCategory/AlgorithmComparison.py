@@ -15,9 +15,8 @@ def eliminate_duplicates(categories):
     return unique_categories
 
 df = pd.read_csv("Netflix DB.csv")
-print(df.head())
 
-print()
+print("By category :")
 print()
 
 # Copia la columna "Category" en una lista para ordenarla
@@ -34,7 +33,7 @@ unique_categories = eliminate_duplicates(categories)
 category_df_ins = pd.DataFrame(unique_categories, columns=["Category"])
 category_df_ins.to_csv("ByCategory/Insertion.csv", index=False)
 
-print(category_df_ins.head())
+#print(category_df_ins.head())
 
 print(f"--------Tiempo de ejecución de Insertion Sort: {end_time - start_time} segundos-----------")
 
@@ -42,7 +41,6 @@ print(f"--------Tiempo de ejecución de Insertion Sort: {end_time - start_time} 
 insertion_sort_time = end_time - start_time
 
 
-print()
 print()
 
 
@@ -63,14 +61,13 @@ unique_categories = eliminate_duplicates(categories)
 category_df_bub = pd.DataFrame(unique_categories, columns=["Category"])
 category_df_bub.to_csv("ByCategory/Bubble.csv", index=False)
 
-print(category_df_bub.head())
+#print(category_df_bub.head())
 
 print(f"----------Tiempo de ejecución de Bubble Sort: {end_time - start_time} segundos------------")
 
 # Guardar el tiempo de ejecución en la lista
 bubble_sort_time = end_time - start_time
 
-print()
 print()
 
 # Volver a cargar el DataFrame original
@@ -90,14 +87,13 @@ unique_categories = eliminate_duplicates(categories)
 category_df_qck = pd.DataFrame(unique_categories, columns=["Category"])
 category_df_qck.to_csv("ByCategory/QuickSort.csv", index=False)
 
-print(category_df_qck.head())
+#print(category_df_qck.head())
 
 print(f"--------Tiempo de ejecución de Quick Sort: {end_time - start_time} segundos-----------")
 
 # Guardar el tiempo de ejecución en la lista
 quick_sort_time = end_time - start_time
 
-print()
 print()
 
 # Volver a cargar el DataFrame original
@@ -117,7 +113,7 @@ unique_categories = eliminate_duplicates(categories)
 category_df_mrg = pd.DataFrame(unique_categories, columns=["Category"])
 category_df_mrg.to_csv("ByCategory/Merge.csv", index=False)
 
-print(category_df_mrg.head())
+#print(category_df_mrg.head())
 
 print(f"--------Tiempo de ejecución de Merge Sort: {end_time - start_time} segundos-----------")
 

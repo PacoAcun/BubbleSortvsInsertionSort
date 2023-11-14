@@ -8,6 +8,9 @@ import MergeSort as mrg
 
 df = pd.read_csv("Netflix DB.csv")
 
+print("By name :")
+print()
+
 # Copia la columna "Name of movie" en una lista para ordenarla
 names = df["Name of movie"].tolist()
 
@@ -20,7 +23,7 @@ end_time = time.time()
 name_df_ins = pd.DataFrame(names, columns=["Name of movie"])
 name_df_ins.to_csv("ByName/Insertion.csv", index=False)
 
-print(name_df_ins.head())
+#print(name_df_ins.head())
 
 print(f"--------Tiempo de ejecución de Insertion Sort: {end_time - start_time} segundos-----------")
 
@@ -28,7 +31,6 @@ print(f"--------Tiempo de ejecución de Insertion Sort: {end_time - start_time} 
 insertion_sort_time = end_time - start_time
 
 
-print()
 print()
 
 
@@ -47,12 +49,16 @@ end_time = time.time()
 name_df_bub = pd.DataFrame(names, columns=["Name of movie"])
 name_df_bub.to_csv("ByName/Bubble.csv", index=False)
 
-print(name_df_bub.head())
+#print(name_df_bub.head())
 
 print(f"----------Tiempo de ejecución de Bubble Sort: {end_time - start_time} segundos------------")
 
 # Guardar el tiempo de ejecución en la lista
 bubble_sort_time = end_time - start_time
+
+
+print()
+
 
 # Volver a cargar el DataFrame original
 df = pd.read_csv("Netflix DB.csv")
@@ -69,12 +75,16 @@ end_time = time.time()
 name_df_qck = pd.DataFrame(names, columns=["Name of movie"])
 name_df_qck.to_csv("ByName/QuickSort.csv", index=False)
 
-print(name_df_qck.head())
+#print(name_df_qck.head())
 
 print(f"--------Tiempo de ejecución de Quick Sort: {end_time - start_time} segundos-----------")
 
 # Guardar el tiempo de ejecución en la lista
 quick_sort_time = end_time - start_time
+
+
+print()
+
 
 # Volver a cargar el DataFrame original
 df = pd.read_csv("Netflix DB.csv")
@@ -91,7 +101,7 @@ end_time = time.time()
 name_df_mrg = pd.DataFrame(names, columns=["Name of movie"])
 name_df_mrg.to_csv("ByName/Merge.csv", index=False)
 
-print(name_df_mrg.head())
+#print(name_df_mrg.head())
 
 print(f"--------Tiempo de ejecución de Merge Sort: {end_time - start_time} segundos-----------")
 
