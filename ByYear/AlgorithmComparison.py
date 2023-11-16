@@ -27,7 +27,7 @@ sorted_years = sorted(years)
 
 # Normal
 start_time = time.time()
-ins.insertion_sort(years.copy())  
+ins.insertion_sort(years)  
 end_time = time.time()
 
 insertion_sort_time_normal = end_time - start_time
@@ -35,7 +35,7 @@ insertion_times.append(time.time() - start_time)
 
 # Revertido
 start_time = time.time()
-ins.insertion_sort(reverse_years.copy())  
+ins.insertion_sort(reverse_years)  
 end_time = time.time()
 
 insertion_sort_time_reverse = end_time - start_time
@@ -43,7 +43,7 @@ insertion_times.append(time.time() - start_time)
 
 # Aleatorio
 start_time = time.time()
-ins.insertion_sort(random_years.copy())  
+ins.insertion_sort(random_years)  
 end_time = time.time()
 
 insertion_sort_time_random = end_time - start_time
@@ -51,7 +51,7 @@ insertion_times.append(time.time() - start_time)
 
 # Ordenado
 start_time = time.time()
-ins.insertion_sort(sorted_years.copy())  
+ins.insertion_sort(sorted_years)  
 end_time = time.time()
 
 insertion_sort_time_sorted = end_time - start_time
@@ -75,7 +75,7 @@ sorted_years = sorted(years)
 
 # Normal
 start_time = time.time()
-bub.bubble_sort(years.copy())  
+bub.bubble_sort(years)  
 end_time = time.time()
 
 bubble_sort_time_normal = end_time - start_time
@@ -83,7 +83,7 @@ bubble_times.append(time.time() - start_time)
 
 # Revertido
 start_time = time.time()
-bub.bubble_sort(reverse_years.copy())  
+bub.bubble_sort(reverse_years)  
 end_time = time.time()
 
 bubble_sort_time_reverse = end_time - start_time
@@ -91,7 +91,7 @@ bubble_times.append(time.time() - start_time)
 
 # Aleatorio
 start_time = time.time()
-bub.bubble_sort(random_years.copy())  
+bub.bubble_sort(random_years)  
 end_time = time.time()
 
 bubble_sort_time_random = end_time - start_time
@@ -99,7 +99,7 @@ bubble_times.append(time.time() - start_time)
 
 # Ordenado
 start_time = time.time()
-bub.bubble_sort(sorted_years.copy())  
+bub.bubble_sort(sorted_years)  
 end_time = time.time()
 
 bubble_sort_time_sorted = end_time - start_time
@@ -123,7 +123,7 @@ sorted_years = sorted(years)
 
 # Normal
 start_time = time.time()
-qck.quick_sort(years.copy(), 0, len(years) - 1)  
+qck.quick_sort(years, 0, len(years) - 1)  
 end_time = time.time()
 
 quick_sort_time_normal = end_time - start_time
@@ -131,7 +131,7 @@ quick_times.append(time.time() - start_time)
 
 # Revertido
 start_time = time.time()
-qck.quick_sort(reverse_years.copy(), 0, len(reverse_years) - 1)  
+qck.quick_sort(reverse_years, 0, len(reverse_years) - 1)  
 end_time = time.time()
 
 quick_sort_time_reverse = end_time - start_time
@@ -139,7 +139,7 @@ quick_times.append(time.time() - start_time)
 
 # Aleatorio
 start_time = time.time()
-qck.quick_sort(random_years.copy(), 0, len(random_years) - 1)  
+qck.quick_sort(random_years, 0, len(random_years) - 1)  
 end_time = time.time()
 
 quick_sort_time_random = end_time - start_time
@@ -147,7 +147,7 @@ quick_times.append(time.time() - start_time)
 
 # Ordenado
 start_time = time.time()
-qck.quick_sort(sorted_years.copy(), 0, len(sorted_years) - 1)  
+qck.quick_sort(sorted_years, 0, len(sorted_years) - 1)  
 end_time = time.time()
 
 quick_sort_time_sorted = end_time - start_time
@@ -171,7 +171,7 @@ sorted_years = sorted(years)
 
 # Normal
 start_time = time.time()
-mrg.merge_sort(years.copy()) 
+mrg.merge_sort(years) 
 end_time = time.time()
 
 merge_sort_time_normal = end_time - start_time
@@ -179,7 +179,7 @@ merge_times.append(time.time() - start_time)
 
 # Revertido
 start_time = time.time()
-mrg.merge_sort(reverse_years.copy()) 
+mrg.merge_sort(reverse_years) 
 end_time = time.time()
 
 merge_sort_time_reverse = end_time - start_time
@@ -187,7 +187,7 @@ merge_times.append(time.time() - start_time)
 
 # Aleatorio
 start_time = time.time()
-mrg.merge_sort(random_years.copy()) 
+mrg.merge_sort(random_years) 
 end_time = time.time()
 
 merge_sort_time_random = end_time - start_time
@@ -195,7 +195,7 @@ merge_times.append(time.time() - start_time)
 
 # Ordenado
 start_time = time.time()
-mrg.merge_sort(sorted_years.copy()) 
+mrg.merge_sort(sorted_years) 
 end_time = time.time()
 
 merge_sort_time_sorted = end_time - start_time
